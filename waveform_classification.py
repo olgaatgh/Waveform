@@ -13,6 +13,7 @@ from sklearn import preprocessing, metrics
 from sklearn.ensemble import GradientBoostingClassifier
 from sklearn import cluster
 from sklearn.cross_validation import  LeaveOneOut
+from sklearn import cross_validation
 
 
 from scipy.stats import sem
@@ -195,6 +196,7 @@ def preprocessing_data(mypath):
     signal = Signal()
     #loading waveforms
     onlyfiles =  [ f for f in listdir(mypath) if isfile(join(mypath,f)) ]  
+    onlyfiles = sorted(onlyfiles)
     data = np.array([signal.load(mypath, file) for file in onlyfiles])
 
     #filtering noise out
